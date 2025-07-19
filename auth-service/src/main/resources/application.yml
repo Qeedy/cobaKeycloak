@@ -1,0 +1,38 @@
+server:
+  port: 8888
+
+spring:
+#  config:
+#    import: configserver
+  cloud:
+    config:
+      enabled: false
+      import-check:
+        enabled: false
+    gateway:
+      routes:
+        - id: customer-service-admin
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/admin/**
+        - id: customer-service-user
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/customers/**
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/auth-demo
+
+keycloak:
+  token-uri: http://localhost:8080/realms/auth-demo/protocol/openid-connect/token
+  client-id: springboot-client
+  client-secret: springboot-secret-123
+
+logging:
+  level:
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE

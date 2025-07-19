@@ -1,0 +1,66 @@
+{
+  "realm" :  "auth-demo" ,
+  "enabled" :  true ,
+  "clients" :  [
+    {
+      "clientId" :  "springboot-client" ,
+      "secret" :  "springboot-secret-123" ,
+      "enabled" :  true ,
+      "protocol" :  "openid-connect" ,
+      "publicClient" :  false ,
+      "directAccessGrantsEnabled" :  true ,
+      "standardFlowEnabled" :  true ,
+      "serviceAccountsEnabled" :  true ,
+      "clientAuthenticatorType" :  "client-secret" ,
+      "redirectUris" :  [ "http://localhost:8080/*" ] ,
+      "attributes" :  {
+        "post.logout.redirect.uris" :  "+" ,
+        "oauth2.device.authorization.grant.enabled" :  "false"
+      }
+    }
+  ] ,
+  "roles" :  {
+    "realm" :  [
+      {
+        "name" :  "USER"
+      } ,
+      {
+        "name" :  "ADMIN"
+      }
+    ]
+  } ,
+  "users" :  [
+    {
+      "username" :  "testuser" ,
+      "enabled" :  true ,
+      "email" :  "test@example.com" ,
+      "emailVerified" :  true ,
+      "firstName" :  "Test" ,
+      "lastName" :  "User" ,
+      "credentials" :  [
+        {
+          "type" :  "password" ,
+          "value" :  "password123" ,
+          "temporary" :  false
+        }
+      ] ,
+      "realmRoles" :  [ "USER" ]
+    } ,
+    {
+      "username" :  "adminuser" ,
+      "enabled" :  true ,
+      "email" :  "admin@example.com" ,
+      "emailVerified" :  true ,
+      "firstName" :  "Admin" ,
+      "lastName" : "User" ,
+      "credentials" :  [
+        {
+          "type" :  "password" ,
+          "value" :  "admin123" ,
+          "temporary" :  false
+        }
+      ] ,
+      "realmRoles" :  [ "ADMIN" ]
+    }
+  ]
+}

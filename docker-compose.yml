@@ -1,0 +1,24 @@
+services:
+
+  keycloak:
+    image:  quay.io/keycloak/keycloak:24.0.2
+    command:  start-dev  --import-realm
+    ports:
+      -  "8080:8080"
+    environment:
+      KC_DB:  dev-mem
+      KC_LOG_LEVEL:  info
+      KEYCLOAK_ADMIN:  admin
+      KEYCLOAK_ADMIN_PASSWORD:  admin123
+    volumes:
+      -  ./config:/opt/keycloak/data/import
+
+  customer-service:
+    build:
+      context:  /customer-service
+
+  auth-service:
+    build:
+      context:  /auth-service
+    ports:
+      -  "8888:8888"
