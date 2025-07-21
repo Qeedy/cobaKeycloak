@@ -1,17 +1,33 @@
 services:
+  db:
+    image: postgres:16
+    container_name: postgres
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
   keycloak:
-    image: quay.io/keycloak/keycloak:24.0.2
-    command: start-dev --import-realm
-    ports:
-      - "8080:8080"
+    image: quay.io/keycloak/keycloak:24.0.3
+    container_name: keycloak
     environment:
-      KC_DB: dev-mem
-      KC_LOG_LEVEL: info
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-    volumes:
-      - ./config:/opt/keycloak/data/import
+      KC_DB: postgres
+      KC_DB_URL_HOST: db
+      KC_DB_URL_PORT: 5432
+      KC_DB_URL_DATABASE: ${DB_NAME}
+      KC_DB_USERNAME: ${DB_USERNAME}
+      KC_DB_PASSWORD: ${DB_PASSWORD}
+      KC_LOG_LEVEL: info
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    command:
+      - start-dev
 
   customer-service:
     build:
@@ -22,3 +38,6 @@ services:
       context: /auth-service
     ports:
       - "8888:8888"
+
+volumes:
+  pgdata:
