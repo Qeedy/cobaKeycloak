@@ -2,42 +2,32 @@ server:
   port: 8888
 
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/routedb
-    driver-class-name: org.postgresql.Driver
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    liquibase:
-      change-log: classpath:db/changelog/db.changelog-master.yml
-      enabled: true
   cloud:
-    config:
-      enabled: false
-      import-check:
-        enabled: false
     gateway:
-      routes:
-        - id: customer-service-admin
-          uri: http://localhost:8081
-          predicates:
-            - Path=/api/admin/**
-        - id: customer-service-user
-          uri: http://localhost:8081
-          predicates:
-            - Path=/api/customers/**
+      default-filters:
+        -  TokenRelay
+  datasource:
+    url: jdbc:postgresql://postgres:5432/routedb
+    driver-class-name: org.postgresql.Driver
+    username: admin
+    password: admin123
+    liquibase:
+      change-log: classpath:db/changelog/db.changelog-master.yaml
+      enabled: true
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/auth-demo
+          issuer-uri: http://keycloak:8080/realms/auth-demo
 
 keycloak:
-  token-uri: http://localhost:8080/realms/auth-demo/protocol/openid-connect/token
+  token-uri: http://keycloak:8080/realms/auth-demo/protocol/openid-connect/token
   client-id: springboot-client
   client-secret: springboot-secret-123
 
 logging:
   level:
+    liquibase: INFO
     org.springframework.security.oauth2: DEBUG
     org.springframework.security: DEBUG
     org.springframework.cloud.gateway: DEBUG

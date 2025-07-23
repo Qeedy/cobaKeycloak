@@ -1,4 +1,4 @@
-package com.saqu.obscf.auth_service;
+package com.coba.kiklok.auth_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

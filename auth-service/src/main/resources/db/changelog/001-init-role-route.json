@@ -1,0 +1,68 @@
+{
+  "databaseChangeLog" :  [
+    {
+      "changeSet" :  {
+        "id" :  "init-route-config-only" ,
+        "author" :  "admin" ,
+        "changes" :  [
+          {
+            "createTable" :  {
+              "tableName" :  "route_config" ,
+              "columns" :  [
+                {
+                  "column" :  {
+                    "name" :  "id" ,
+                    "type" :  "BIGINT" ,
+                    "autoIncrement" :  true ,
+                    "constraints" :  {
+                      "primaryKey" :  true ,
+                      "nullable" :  false
+                    }
+                  }
+                } ,
+                {
+                  "column" :  {
+                    "name" :  "route_id" ,
+                    "type" :  "VARCHAR(255)"
+                  }
+                } ,
+                {
+                  "column" :  {
+                    "name" :  "path_pattern" ,
+                    "type" :  "VARCHAR(255)"
+                  }
+                } ,
+                {
+                  "column" :  {
+                    "name" :  "uri" ,
+                    "type" :  "VARCHAR(255)"
+                  }
+                }
+              ]
+            }
+          } ,
+          {
+            "insert" :  {
+              "tableName" :  "route_config" ,
+              "columns" :  [
+                {  "column" :  {  "name" :  "route_id" ,  "value" :  "customer-service-admin"  }  } ,
+                {  "column" :  {  "name" :  "path_pattern" ,  "value" :  "/api/admin/**"  }  } ,
+                {  "column" :  {  "name" :  "uri" , "value" :  "http://customer-service:8081"  }  }
+              ]
+            }
+          } ,
+          {
+            "insert" :  {
+              "tableName" :  "route_config" ,
+              "columns" :  [
+                {  "column" : {  "name" :  "route_id" ,  "value" :  "customer-service-user"  }  } ,
+                {  "column" :  {  "name" :  "path_pattern" ,  "value" :  "/api/customers/**"  }  } ,
+                {  "column" :  {  "name" :  "uri" ,  "value" :  "http://customer-service:8081"  }  }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

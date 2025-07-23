@@ -1,4 +1,4 @@
-package com.saqu.obscf.customer_service;
+package com.coba.kiklok.customer_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

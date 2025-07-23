@@ -1,4 +1,4 @@
-package com.saqu.obscf.customer_service;
+package com.coba.kiklok.customer_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

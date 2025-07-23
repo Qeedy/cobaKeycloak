@@ -1,4 +1,4 @@
-package com.saqu.obscf.auth_service;
+package com.coba.kiklok.auth_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

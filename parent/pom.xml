@@ -16,6 +16,7 @@
     <spring.boot.version>3.5.3</spring.boot.version>
     <spring.cloud.version>2025.0.0</spring.cloud.version>
     <lombok.version>1.18.32</lombok.version>
+    <postgres.version>42.7.3</postgres.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -39,6 +40,11 @@
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
         <version>${lombok.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>${postgres.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

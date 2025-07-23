@@ -1,4 +1,4 @@
-package com.saqu.obscf.auth_service.model.request;
+package com.coba.kiklok.auth_service.model.request;
 
 import lombok.Getter;
 import lombok.Setter;

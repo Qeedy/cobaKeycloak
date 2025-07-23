@@ -1,4 +1,4 @@
-package com.saqu.obscf.auth_service.config;
+package com.coba.kiklok.auth_service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
