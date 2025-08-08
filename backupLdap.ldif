@@ -1,0 +1,112 @@
+version: 1
+
+dn: dc=com,dc=cobaKeycloak
+objectClass: dcObject
+objectClass: organization
+objectClass: top
+dc: com
+o: cobaKeycloak
+
+dn: ou=Roles,dc=com,dc=cobaKeycloak
+objectClass: organizationalUnit
+objectClass: top
+ou: Roles
+
+dn: ou=Users,dc=com,dc=cobaKeycloak
+objectClass: organizationalUnit
+objectClass: top
+ou: Users
+
+dn: cn=ADMIN,ou=Roles,dc=com,dc=cobaKeycloak
+objectClass: groupOfNames
+objectClass: top
+cn: ADMIN
+member: uid=adminldap,ou=Users,dc=com,dc=cobaKeycloak
+member: uid=admintest,ou=Users,dc=com,dc=cobaKeycloak
+
+dn: cn=MAKER,ou=Roles,dc=com,dc=cobaKeycloak
+objectClass: groupOfNames
+objectClass: top
+cn: MAKER
+member: uid=makerdua,ou=Users,dc=com,dc=cobaKeycloak
+member: uid=makersatu,ou=Users,dc=com,dc=cobaKeycloak
+
+dn: cn=CHECKER,ou=Roles,dc=com,dc=cobaKeycloak
+objectClass: groupOfNames
+objectClass: top
+cn: CHECKER
+member: uid=checkerdua,ou=Users,dc=com,dc=cobaKeycloak
+member: uid=checkersatu,ou=Users,dc=com,dc=cobaKeycloak
+
+dn: uid=makerdua,ou=Users,dc=com,dc=cobaKeycloak
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Maker
+sn: Dua
+mail: maker.dua@cobaKeycloak.com
+uid: makerdua
+userPassword:: e1NTSEEyNTZ9L0EzR0FBWjFBZW44QU1SN1BNZ29iWExlalU3aUxoRVJXY0RKN
+ VZIZThMbnhHYVpKazFERTN3PT0=
+
+dn: uid=adminldap,ou=Users,dc=com,dc=cobaKeycloak
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: admin
+sn: ldap
+mail: adminldap@cobaKeycloak.com
+uid: adminldap
+userPassword:: e1NTSEF9WHVDRGJSUHE3REloMzhHVFFCUTJYTlVXc2p2VjJ1aG1GNHpDR3c9P
+ Q==
+
+dn: uid=admintest,ou=Users,dc=com,dc=cobaKeycloak
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: admin
+sn: test
+mail: admintest@cobaKeycloak.com
+uid: admintest
+userPassword:: e1NTSEEyNTZ9Y2YvZGl4U2RLR2NoR0lPQzYweGlIb25KMjd4UXUzUDhwOThQV
+ 3loSFhhRThFZnNjS1ZsQSt3PT0=
+
+dn: uid=makersatu,ou=Users,dc=com,dc=cobaKeycloak
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Maker
+sn: Satu
+mail: maker.satu@cobaKeycloak.com
+uid: makersatu
+userPassword:: e1NTSEEyNTZ9L0EzR0FBWjFBZW44QU1SN1BNZ29iWExlalU3aUxoRVJXY0RKN
+ VZIZThMbnhHYVpKazFERTN3PT0=
+
+dn: uid=checkerdua,ou=Users,dc=com,dc=cobaKeycloak
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Checker
+sn: Dua
+mail: checker.dua@cobaKeycloak.com
+uid: checkerdua
+userPassword:: e1NTSEEyNTZ9cndqaHlxNXU0Nlh4SmtTM3N6ZkRUdEk4ZjRKNTd2SWVWejVvY
+ jlVbzlac3A1VXVzRGNVSmV3PT0=
+
+dn: uid=checkersatu,ou=Users,dc=com,dc=cobaKeycloak
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Checker
+sn: Satu
+mail: checker.satu@cobaKeycloak.com
+uid: checkersatu
+userPassword:: e1NTSEF9Zi82ZFJqMlVBWmJLWHlTcnZlSHF1c214MFduS2FGZTZpQzN1aFE9P
+ Q==
+
